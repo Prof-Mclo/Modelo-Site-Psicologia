@@ -1,407 +1,217 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Psicologia Online - Cuidado e Acolhimento</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust as needed */
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        .faq-item.active .plus-icon {
-            transform: rotate(45deg);
-        }
-        .plus-icon {
-            transition: transform 0.3s ease-in-out;
-        }
-        /* Custom Tailwind Colors (Refined) */
-        :root {
-            --color-light-pink: #F5E0E8; /* Base background - slightly deeper */
-            --color-soft-lilac: #D0C5E0; /* Section background - richer */
-            --color-deep-plum: #3A1F4A; /* Main text, headings - slightly darker for contrast */
-            --color-elegant-purple: #8B5F9B; /* Accents, buttons - more vibrant */
-            --color-medium-pink: #C08FB0; /* Secondary text, hover - slightly more saturated */
-        }
-        .bg-light-pink { background-color: var(--color-light-pink); }
-        .bg-soft-lilac { background-color: var(--color-soft-lilac); }
-        .bg-deep-plum { background-color: var(--color-deep-plum); }
-        .bg-elegant-purple { background-color: var(--color-elegant-purple); }
-        .bg-medium-pink { background-color: var(--color-medium-pink); }
-        .text-deep-plum { color: var(--color-deep-plum); }
-        .text-elegant-purple { color: var(--color-elegant-purple); }
-        .text-medium-pink { color: var(--color-medium-pink); }
-        .border-medium-pink { border-color: var(--color-medium-pink); }
-        .hover\:bg-elegant-purple:hover { background-color: var(--color-elegant-purple); }
-        .hover\:text-elegant-purple:hover { color: var(--color-elegant-purple); }
-        .hover\:bg-medium-pink:hover { background-color: var(--color-medium-pink); }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mente Serena | Psicologia Online</title>
+  <!-- Tailwind & AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --rose-50: #fff7fa;
+      --rose-100: #fdeff3;
+      --rose-200: #fbd7e5;
+      --rose-300: #f6b1cf;
+      --rose-400: #ee85b5;
+      --rose-500: #e5579c;
+      --rose-600: #cc3a84;
+      --rose-700: #a62a6a;
+      --rose-800: #7c204f;
+      --rose-900: #4e1430;
+      --ink: #322028;
+    }
+    body { font-family: "Poppins", sans-serif; color: var(--ink); }
+    .rose-gradient { background: linear-gradient(135deg,var(--rose-50)0%,var(--rose-100)40%,var(--rose-200)100%); }
+    .divider { background-image:url("data:image/svg+xml,%3csvg width='100%25' height='160' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpolygon points='0,0 100%25,160 100%25,0' fill='%23fff7fa'/%3e%3c/svg%3e");height:160px; }
+    .clip-wave { clip-path: polygon(0 0,100% 6%,100% 100%,0 100%); }
+  </style>
 </head>
-<body class="bg-light-pink text-deep-plum">
+<body class="rose-gradient">
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 backdrop-blur-lg/60 bg-white/70 shadow transition-all">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="#hero" class="flex items-center gap-2 font-semibold text-rose-700">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+        <span>Mente Serena</span>
+      </a>
+      <nav class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#servicos" class="hover:text-rose-600">Serviços</a>
+        <a href="#sobre" class="hover:text-rose-600">Sobre Mim</a>
+        <a href="#faq" class="hover:text-rose-600">FAQ</a>
+        <a href="#contato" class="bg-rose-600 text-white px-4 py-2 rounded-full hover:bg-rose-700 transition">Agendar</a>
+      </nav>
+      <button id="burger" class="md:hidden p-2 text-rose-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 flex flex-col gap-4 text-sm font-medium bg-white/90">
+      <a href="#servicos" class="py-2 border-b border-rose-100">Serviços</a>
+      <a href="#sobre" class="py-2 border-b border-rose-100">Sobre Mim</a>
+      <a href="#faq" class="py-2 border-b border-rose-100">FAQ</a>
+      <a href="#contato" class="py-2">Agendar Consulta</a>
+    </div>
+  </header>
 
-    <!-- Header / Navigation -->
-    <header id="header" class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#inicio" class="text-xl font-bold text-elegant-purple">Mente Serena</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#servicos" class="text-deep-plum hover:text-elegant-purple transition text-center">Serviços</a>
-                <a href="#sobre" class="text-deep-plum hover:text-elegant-purple transition text-center">Sobre Mim</a>
-                <a href="#galeria" class="text-deep-plum hover:text-elegant-purple transition text-center">Galeria</a>
-                <a href="#reflexao-do-dia" class="text-deep-plum hover:text-elegant-purple transition text-center">Reflexão do Dia ✨</a>
-                <a href="#faq" class="text-deep-plum hover:text-elegant-purple transition text-center">Dúvidas</a>
-                <a href="#contato" class="text-deep-plum hover:text-elegant-purple transition text-center">Contato</a>
-            </nav>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-elegant-purple focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
+  <!-- HERO -->
+  <section id="hero" class="relative pt-32 lg:pt-40 pb-20 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-right">
+        <h1 class="text-3xl lg:text-5xl font-bold text-rose-700 mb-6 leading-tight">A transformação começa<br class="hidden md:block"/> com <span class="text-rose-500">acolhimento</span></h1>
+        <p class="text-base lg:text-lg text-rose-800/80 mb-8 max-w-md">Ofereço um espaço seguro para você se ouvir, se reconhecer e se reinventar. Vamos juntos trilhar o caminho do autoconhecimento e bem‑estar.</p>
+        <a href="#contato" class="inline-block bg-rose-600 text-white font-medium px-6 py-3 rounded-full hover:bg-rose-700 transition">Agende sua sessão</a>
+      </div>
+      <div class="relative h-96 lg:h-[500px]" data-aos="fade-left">
+        <img src="https://placehold.co/500x700/cc3a84/ffffff?text=FOTO+HERO" alt="Foto da psicóloga" class="object-cover w-full h-full rounded-tl-[80px] rounded-br-[80px] shadow-xl" />
+      </div>
+    </div>
+    <div class="divider"></div>
+  </section>
+
+  <!-- MISSÃO & OBJETIVOS -->
+  <section id="missao" class="relative rose-gradient pt-24 pb-28 text-center clip-wave">
+    <div class="max-w-5xl mx-auto px-6" data-aos="fade-up">
+      <h2 class="text-3xl lg:text-5xl font-semibold text-white mb-6">Como posso ajudar você hoje?</h2>
+      <p class="text-white/90 max-w-3xl mx-auto mb-12">Minha missão é promover o bem‑estar emocional, oferecendo um espaço acolhedor e seguro, onde, juntos, trabalhamos para aliviar cargas emocionais, resgatar o autocuidado e desenvolver resiliência. Acredito que desafios podem se transformar em aprendizado, construindo equilíbrio para uma vida mais leve e saudável.</p>
+      <h3 class="text-2xl lg:text-3xl font-semibold text-white mb-10">Principais objetivos do meu trabalho:</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <template id="cardTemplate">
+          <div class="bg-white p-8 rounded-xl shadow-sm flex flex-col items-center" data-aos="zoom-in">
+            <svg class="w-12 h-12 text-rose-600 mb-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="3"/><path d="m9 12 2 2 4-4"/></svg>
+            <p class="font-medium text-rose-800 text-center">placeholder text</p>
+          </div>
+        </template>
+        <script>
+          const objetivos=["Lidar com ansiedade, estresse e depressão","Desenvolver controle emocional e resiliência","Superar luto e transformar dor em crescimento","Melhorar autoestima, autocuidado e autoconhecimento","Fortalecer relacionamentos e promover bem‑estar emocional"];const grid=document.currentScript.parentElement;objetivos.forEach((txt,i)=>{const c=document.getElementById('cardTemplate').content.cloneNode(true);c.querySelector('div').setAttribute('data-aos-delay',50*i);c.querySelector('p').textContent=txt;grid.appendChild(c)});
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="bg-white clip-wave pt-24 pb-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-center text-3xl lg:text-4xl font-semibold text-rose-700 mb-12" data-aos="fade-up">Áreas de atuação</h2>
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+        <!-- Card -->
+        <div class="bg-rose-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition flex flex-col gap-4">
+          <h3 class="font-semibold text-rose-800 text-xl">Terapia Individual</h3>
+          <p class="text-rose-800/80 text-sm">Atendimento personalizado para lidar com questões emocionais e desenvolver estratégias de enfrentamento.</p>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#servicos" class="block py-2 px-6 text-sm hover:bg-soft-lilac text-center">Serviços</a>
-            <a href="#sobre" class="block py-2 px-6 text-sm hover:bg-soft-lilac text-center">Sobre Mim</a>
-            <a href="#galeria" class="block py-2 px-6 text-sm hover:bg-soft-lilac text-center">Galeria</a>
-            <a href="#reflexao-do-dia" class="block py-2 px-6 text-sm hover:bg-soft-lilac text-center">Reflexão do Dia ✨</a>
-            <a href="#faq" class="block py-2 px-6 text-sm hover:bg-soft-lilac text-center">Dúvidas</a>
-            <a href="#contato" class="block py-2 px-6 text-sm hover:bg-soft-lilac text-center">Contato</a>
+        <div class="bg-rose-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition flex flex-col gap-4">
+          <h3 class="font-semibold text-rose-800 text-xl">Apoio Psicológico para Mães</h3>
+          <p class="text-rose-800/80 text-sm">Suporte especializado para os desafios da maternidade, autocuidado e construção da nova identidade materna.</p>
         </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="inicio" class="bg-soft-lilac pt-24 pb-16 md:pt-32 md:pb-24">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-elegant-purple mb-4">Encontre seu equilíbrio, transforme sua vida.</h1>
-                <p class="text-lg md:text-xl text-medium-pink max-w-3xl mx-auto mb-8">Ofereço um espaço seguro e acolhedor para você explorar seus sentimentos e construir uma jornada de autoconhecimento e bem-estar.</p>
-                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="bg-elegant-purple text-white font-bold py-3 px-8 rounded-full hover:bg-medium-pink transition-colors duration-300 inline-block">
-                    Agende sua Consulta
-                </a>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="servicos" class="py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple">Como posso te ajudar?</h2>
-                    <p class="mt-4 text-lg text-medium-pink max-w-2xl mx-auto">Esta seção apresenta as áreas em que posso oferecer suporte. Meu objetivo é fornecer as ferramentas e o acolhimento necessários para que você possa lidar com os desafios da vida de forma mais saudável e consciente.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Ansiedade</h3>
-                        <p class="text-deep-plum">Aprenda a gerenciar preocupações excessivas, medos e ataques de pânico, desenvolvendo estratégias para uma vida mais calma.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Depressão</h3>
-                        <p class="text-deep-plum">Encontre apoio para lidar com a tristeza profunda, falta de energia e perda de interesse, reencontrando o caminho para a alegria.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Relacionamentos</h3>
-                        <p class="text-deep-plum">Melhore a comunicação, resolva conflitos e construa laços mais saudáveis e significativos com as pessoas ao seu redor.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Autoconhecimento</h3>
-                        <p class="text-deep-plum">Inicie uma jornada para dentro de si, compreendendo suas emoções, valores e propósito de vida.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Estresse e Burnout</h3>
-                        <p class="text-deep-plum">Desenvolva resiliência e encontre o equilíbrio entre as demandas profissionais e a vida pessoal para evitar o esgotamento.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Autoestima</h3>
-                        <p class="text-deep-plum">Fortaleça sua confiança e amor-próprio, reconhecendo seu valor e potencial para alcançar seus objetivos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- How it Works Section -->
-        <section id="como-funciona" class="bg-soft-lilac py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple">Como funciona a Terapia Online?</h2>
-                     <p class="mt-4 text-lg text-medium-pink max-w-2xl mx-auto">O processo para iniciar sua jornada terapêutica é simples e direto. Abaixo, descrevo os três passos fundamentais, desde o primeiro contato até a realização da sua sessão, garantindo um acesso fácil e seguro ao cuidado com sua saúde mental.</p>
-                </div>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
-                    <div class="text-center max-w-xs">
-                        <div class="bg-elegant-purple text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Agendamento</h3>
-                        <p class="text-deep-plum">Entre em contato via WhatsApp para agendar o melhor dia e horário para sua sessão.</p>
-                    </div>
-                     <div class="text-center max-w-xs">
-                        <div class="bg-elegant-purple text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Pagamento</h3>
-                        <p class="text-deep-plum">O pagamento é facilitado e pode ser realizado via Pix ou transferência bancária antes da sessão.</p>
-                    </div>
-                     <div class="text-center max-w-xs">
-                        <div class="bg-elegant-purple text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-                        <h3 class="text-xl font-bold text-elegant-purple mb-2">Sessão</h3>
-                        <p class="text-deep-plum">No horário marcado, a sessão será realizada por videochamada em uma plataforma segura e sigilosa.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- About Section -->
-        <section id="sobre" class="py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3 text-center">
-                        <img src="https://placehold.co/300x300/D4A9C4/4A2B5A?text=Psic%C3%B3loga" alt="Foto da Psicóloga" class="rounded-full mx-auto shadow-lg w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-medium-pink">
-                    </div>
-                    <div class="md:w-2/3">
-                        <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple mb-4">Sobre Mim</h2>
-                         <p class="mt-4 text-lg text-medium-pink mb-6">Conheça um pouco sobre a profissional que irá te acompanhar. Esta seção é dedicada a apresentar minha formação, minha abordagem terapêutica e os valores que guiam meu trabalho, para que você se sinta seguro e confiante ao iniciar sua jornada.</p>
-                        <p class="mb-4 text-deep-plum">Olá! Sou [Seu Nome], psicóloga com registro CRP 00/00000. Minha paixão é ajudar pessoas a navegarem pelos desafios da vida com mais leveza e autoconhecimento. Acredito que cada indivíduo possui uma força interna única para a mudança e meu papel é ser uma facilitadora nesse processo de descoberta e transformação.</p>
-                        <p class="text-deep-plum">Utilizo a abordagem [Sua Abordagem, ex: Terapia Cognitivo-Comportamental], focando em criar um ambiente de escuta ativa, empatia e sem julgamentos, onde você se sentirá à vontade para ser quem realmente é. Vamos juntos trilhar este caminho?</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="galeria" class="bg-soft-lilac py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple">Galeria de Fotos</h2>
-                    <p class="mt-4 text-lg text-medium-pink max-w-2xl mx-auto">Aqui você pode ver algumas imagens do espaço de atendimento ou momentos que representam a leveza e o acolhimento do trabalho realizado. Sinta-se à vontade para explorar.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="https://placehold.co/600x400/D4A9C4/4A2B5A?text=Ambiente+1" alt="Ambiente de Terapia 1" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <p class="text-deep-plum text-sm">Um espaço tranquilo e acolhedor para suas sessões.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="https://placehold.co/600x400/D4A9C4/4A2B5A?text=Ambiente+2" alt="Ambiente de Terapia 2" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <p class="text-deep-plum text-sm">Detalhes que fazem a diferença no seu conforto.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="https://placehold.co/600x400/D4A9C4/4A2B5A?text=Trabalho+3" alt="Trabalho de Terapia 3" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <p class="text-deep-plum text-sm">Representação visual do cuidado e atenção.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="https://placehold.co/600x400/D4A9C4/4A2B5A?text=Trabalho+4" alt="Trabalho de Terapia 4" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <p class="text-deep-plum text-sm">Um ambiente propício para o seu desenvolvimento.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="https://placehold.co/600x400/D4A9C4/4A2B5A?text=Detalhe+5" alt="Detalhe de Terapia 5" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <p class="text-deep-plum text-sm">Pequenos toques que promovem o bem-estar.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="https://placehold.co/600x400/D4A9C4/4A2B5A?text=Detalhe+6" alt="Detalhe de Terapia 6" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <p class="text-deep-plum text-sm">Acolhimento em cada detalhe do espaço.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reflection Space Section (New LLM Feature) -->
-        <section id="reflexao-do-dia" class="bg-light-pink py-16 md:py-24">
-            <div class="container mx-auto px-6 max-w-3xl">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple">Reflexão do Dia ✨</h2>
-                    <p class="mt-4 text-lg text-medium-pink max-w-2xl mx-auto">Escreva sobre o que está em sua mente, seus sentimentos ou um desafio. Nossa assistente virtual irá gerar uma breve reflexão para te acompanhar. Lembre-se: esta ferramenta é para inspiração e não substitui o acompanhamento profissional.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <textarea id="reflection-input" class="w-full p-4 border border-soft-lilac rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-medium-pink resize-y" rows="6" placeholder="Escreva aqui seus pensamentos..."></textarea>
-                    <button id="generate-reflection-button" class="bg-elegant-purple text-white font-bold py-3 px-8 rounded-full hover:bg-medium-pink transition-colors duration-300 w-full md:w-auto">
-                        Gerar Reflexão ✨
-                    </button>
-                    <div id="reflection-output" class="mt-6 p-4 bg-soft-lilac rounded-lg text-deep-plum hidden">
-                        <p id="reflection-text" class="italic"></p>
-                        <div id="reflection-loading" class="hidden text-center">
-                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-elegant-purple mx-auto"></div>
-                            <p class="mt-2">Gerando sua reflexão...</p>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-4 text-center">Atenção: As reflexões geradas pela IA são para fins de inspiração e não constituem aconselhamento psicológico profissional.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="bg-soft-lilac py-16 md:py-24">
-            <div class="container mx-auto px-6 max-w-3xl">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple">Dúvidas Frequentes</h2>
-                    <p class="mt-4 text-lg text-medium-pink max-w-2xl mx-auto">É natural ter perguntas antes de começar a terapia. Reuni aqui as dúvidas mais comuns para te ajudar a entender melhor o processo. Esta seção interativa permite que você explore as respostas de forma simples e direta.</p>
-                </div>
-                <div id="faq-container" class="space-y-4">
-                    <div class="faq-item bg-white rounded-lg shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-elegant-purple">
-                            <span>Qual a duração de uma sessão?</span>
-                            <span class="plus-icon text-2xl text-medium-pink">+</span>
-                        </button>
-                        <div class="faq-answer px-6 text-deep-plum">
-                            <p>Cada sessão de terapia tem a duração de 50 minutos, um tempo ideal para aprofundar as questões trazidas sem se tornar cansativo.</p>
-                        </div>
-                    </div>
-                     <div class="faq-item bg-white rounded-lg shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-elegant-purple">
-                            <span>A terapia online é realmente eficaz?</span>
-                            <span class="plus-icon text-2xl text-medium-pink">+</span>
-                        </button>
-                        <div class="faq-answer px-6 text-deep-plum">
-                            <p>Sim! Diversos estudos comprovam que a terapia online tem a mesma eficácia da presencial. O mais importante é a qualidade da conexão entre terapeuta e paciente, o que pode ser plenamente estabelecido no ambiente virtual.</p>
-                        </div>
-                    </div>
-                     <div class="faq-item bg-white rounded-lg shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-elegant-purple">
-                            <span>O que eu preciso para fazer a terapia online?</span>
-                            <span class="plus-icon text-2xl text-medium-pink">+</span>
-                        </button>
-                        <div class="faq-answer px-6 text-deep-plum">
-                            <p>Você precisa de um dispositivo com câmera e microfone (celular, computador ou tablet), uma boa conexão com a internet e um local privado onde se sinta confortável para falar sem interrupções.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item bg-white rounded-lg shadow-sm">
-                        <button class="faq-question w-full flex justify-between items-center text-left p-6 font-semibold text-elegant-purple">
-                            <span>Tudo que eu disser será confidencial?</span>
-                            <span class="plus-icon text-2xl text-medium-pink">+</span>
-                        </button>
-                        <div class="faq-answer px-6 text-deep-plum">
-                            <p>Absolutamente. O sigilo é um pilar fundamental da psicologia. Tudo o que for conversado na sessão é estritamente confidencial, seguindo o Código de Ética Profissional do Psicólogo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contato" class="py-16 md:py-24">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-elegant-purple mb-4">Pronto para dar o primeiro passo?</h2>
-                <p class="text-lg md:text-xl text-medium-pink max-w-3xl mx-auto mb-8">Sua jornada de autoconhecimento e bem-estar pode começar agora. Entre em contato para agendar sua primeira consulta e vamos caminhar juntos em direção à sua melhor versão.</p>
-                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="bg-elegant-purple text-white font-bold py-3 px-8 rounded-full hover:bg-medium-pink transition-colors duration-300 inline-block">
-                    Fale Comigo no WhatsApp
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-elegant-purple text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 [Seu Nome] - Psicologia Online. Todos os direitos reservados.</p>
-            <p class="text-sm mt-2 text-soft-lilac">Este é um site modelo desenvolvido para um projeto escolar.</p>
+        <div class="bg-rose-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition flex flex-col gap-4">
+          <h3 class="font-semibold text-rose-800 text-xl">Ansiedade & Burnout</h3>
+          <p class="text-rose-800/80 text-sm">Ferramentas práticas para reduzir sintomas de ansiedade, estresse crônico e prevenção do burnout.</p>
         </div>
-    </footer>
+        <div class="bg-rose-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition flex flex-col gap-4">
+          <h3 class="font-semibold text-rose-800 text-xl">Luto & Perdas</h3>
+          <p class="text-rose-800/80 text-sm">Acolhimento e técnicas terapêuticas para ressignificar perdas e reconstruir projetos de vida.</p>
+        </div>
+        <div class="bg-rose-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition flex flex-col gap-4">
+          <h3 class="font-semibold text-rose-800 text-xl">Relacionamentos Saudáveis</h3>
+          <p class="text-rose-800/80 text-sm">Desenvolvimento de comunicação assertiva e fortalecimento dos vínculos afetivos.</p>
+        </div>
+        <div class="bg-rose-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition flex flex-col gap-4">
+          <h3 class="font-semibold text-rose-800 text-xl">Autoconhecimento & Propósito</h3>
+          <p class="text-rose-800/80 text-sm">Exploração de valores, crenças e objetivos para alinhar escolhas de vida ao seu propósito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const header = document.getElementById('header');
-            const generateReflectionButton = document.getElementById('generate-reflection-button');
-            const reflectionInput = document.getElementById('reflection-input');
-            const reflectionOutput = document.getElementById('reflection-output');
-            const reflectionText = document.getElementById('reflection-text');
-            const reflectionLoading = document.getElementById('reflection-loading');
+  <!-- SOBRE MIM -->
+  <section id="sobre" class="bg-rose-50 pt-24 pb-28">
+    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <img src="https://placehold.co/500x500/a62a6a/ffffff?text=FOTO+SOBRE" alt="Psicóloga" class="w-full h-auto rounded-full shadow-lg" />
+      </div>
+      <div data-aos="fade-left">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-rose-700 mb-6">Sobre mim</h2>
+        <p class="text-rose-800/80 mb-4">Olá! Sou <strong>Clara Amarante</strong>, psicóloga (CRP 00/00000) apaixonada por auxiliar mulheres a conquistarem equilíbrio emocional e autoconfiança. Ao longo de <strong>10 anos de atuação</strong>, venho integrando técnicas da Terapia Cognitivo‑Comportamental com abordagens baseadas em evidências científicas.</p>
+        <p class="text-rose-800/80 mb-4">Acredito que cada pessoa carrega recursos internos únicos. Meu papel é oferecer um <em>holding</em> empático, seguro e colaborativo, facilitando a descoberta desses recursos para que você se torne protagonista da sua trajetória.</p>
+        <p class="text-rose-800/80">Será um prazer caminhar ao seu lado neste processo de autoconhecimento.</p>
+      </div>
+    </div>
+  </section>
 
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
+  <!-- INSTAGRAM CTA & GALERIA -->
+  <section id="instagram" class="bg-white pt-24 pb-28 text-center">
+    <div class="max-w-5xl mx-auto px-6" data-aos="zoom-in">
+      <h2 class="text-3xl lg:text-4xl font-semibold text-rose-700 mb-12">Clique abaixo e siga‑me no Instagram</h2>
+      <a href="https://instagram.com/lanediaspsicologa" target="_blank" class="inline-block transform hover:-translate-y-2 transition">
+        <img src="https://placehold.co/350x700/000000/ffffff?text=MOCKUP" alt="Instagram" class="mx-auto w-72 md:w-96 lg:w-[420px]" />
+      </a>
+    </div>
+    <div class="max-w-5xl mx-auto px-6 mt-16" data-aos="fade-up">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="https://placehold.co/300x350/fdeff3/000?text=IMG+1" alt="Galeria 1" class="w-full object-cover rounded-md" />
+        <img src="https://placehold.co/300x350/fdeff3/000?text=IMG+2" alt="Galeria 2" class="w-full object-cover rounded-md" />
+        <img src="https://placehold.co/300x350/fdeff3/000?text=IMG+3" alt="Galeria 3" class="w-full object-cover rounded-md" />
+        <img src="https://placehold.co/300x350/fdeff3/000?text=IMG+4" alt="Galeria 4" class="w-full object-cover rounded-md" />
+      </div>
+    </div>
+  </section>
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('shadow-lg');
-                } else {
-                    header.classList.remove('shadow-lg');
-                }
-            });
+  <!-- FAQ -->
+  <section id="faq" class="bg-white pt-24 pb-28">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-center text-3xl lg:text-4xl font-semibold text-rose-700 mb-12" data-aos="fade-up">Dúvidas frequentes</h2>
+      <div class="space-y-4" id="faqContainer">
+        <details class="bg-rose-50 rounded-md p-6 shadow-sm" data-aos="fade-up" open>
+          <summary class="font-medium cursor-pointer text-rose-800">Qual a duração das sessões?</summary>
+          <p class="mt-4 text-sm text-rose-800/80">Cada sessão tem 50 minutos – tempo ideal para aprofundarmos temas sem sobrecarga.</p>
+        </details>
+        <details class="bg-rose-50 rounded-md p-6 shadow-sm" data-aos="fade-up" data-aos-delay="50">
+          <summary class="font-medium cursor-pointer text-rose-800">Terapia online é eficaz?</summary>
+          <p class="mt-4 text-sm text-rose-800/80">Sim! Estudos demonstram equivalência de resultados entre atendimentos online e presenciais, desde que haja vínculo terapêutico.</p>
+        </details>
+        <details class="bg-rose-50 rounded-md p-6 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+          <summary class="font-medium cursor-pointer text-rose-800">O que preciso para fazer terapia online?</summary>
+          <p class="mt-4 text-sm text-rose-800/80">Um dispositivo com câmera, conexão estável e um ambiente privado onde se sinta à vontade.</p>
+        </details>
+        <details class="bg-rose-50 rounded-md p-6 shadow-sm" data-aos="fade-up" data-aos-delay="150">
+          <summary class="font-medium cursor-pointer text-rose-800">O sigilo é garantido?</summary>
+          <p class="mt-4 text-sm text-rose-800/80">Totalmente. Respeito o Código de Ética Profissional do Psicólogo, assegurando confidencialidade.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
-            const faqContainer = document.getElementById('faq-container');
-            if(faqContainer) {
-                faqContainer.addEventListener('click', function(e) {
-                    const questionButton = e.target.closest('.faq-question');
-                    if (questionButton) {
-                        const faqItem = questionButton.parentElement;
-                        
-                        const currentlyActive = document.querySelector('.faq-item.active');
-                        if (currentlyActive && currentlyActive !== faqItem) {
-                            currentlyActive.classList.remove('active');
-                        }
+  <!-- CTA CONTATO -->
+  <section id="contato" class="bg-rose-600 text-white text-center py-20 lg:py-32 clip-wave">
+    <div class="max-w-3xl mx-auto px-6" data-aos="zoom-in">
+      <h2 class="text-3xl lg:text-4xl font-semibold mb-6">Pronta para iniciar sua jornada?</h2>
+      <p class="mb-10 text-white/90">Entre em contato e dê o primeiro passo em direção a uma vida emocional mais equilibrada.</p>
+      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="inline-block bg-white text-rose-700 font-medium px-8 py-3 rounded-full hover:bg-rose-50 transition">Falar no WhatsApp</a>
+    </div>
+  </section>
 
-                        faqItem.classList.toggle('active');
-                    }
-                });
-            }
+  <!-- FOOTER -->
+  <footer class="bg-rose-900 text-rose-100 py-8 text-sm">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4">
+      <p>&copy; 2025 Clara Amarante | Psicologia Online. Todos os direitos reservados.</p>
+      <p class="text-rose-200">Site modelo para fins de demonstração.</p>
+    </div>
+  </footer>
 
-            if (generateReflectionButton) {
-                generateReflectionButton.addEventListener('click', async () => {
-                    const prompt = reflectionInput.value.trim();
-                    if (prompt === '') {
-                        reflectionText.textContent = 'Por favor, escreva algo para refletir.';
-                        reflectionOutput.classList.remove('hidden');
-                        return;
-                    }
+  <!-- BOTÃO WHATSAPP -->
+  <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-rose-600 text-white flex items-center justify-center shadow-lg hover:bg-rose-700 transition">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M16.728 13.209c-.278-.139-1.644-.811-1.898-.903-.254-.093-.439-.139-.624.139-.186.278-.715.901-.876 1.086-.161.186-.323.208-.601.07-.278-.139-1.173-.431-2.234-1.378-.825-.736-1.381-1.646-1.541-1.925-.161-.278-.017-.430.121-.568.125-.124.278-.323.417-.485.139-.162.185-.278.278-.463.092-.186.046-.347-.023-.485-.07-.139-.624-1.505-.855-2.062-.226-.547-.455-.474-.624-.483l-.532-.008c-.170-.009-.447.062-.681.287-.231.225-.898.879-.898 2.139 0 1.259.922 2.476 1.05 2.646.125.17 1.814 2.77 4.396 3.885.614.265 1.091.424 1.463.544.614.196 1.17.168 1.612.102.492-.074 1.644-.671 1.877-1.319.232-.647.232-1.205.162-1.319-.07-.115-.255-.186-.532-.324z"/></svg>
+  </a>
 
-                    reflectionOutput.classList.remove('hidden');
-                    reflectionText.textContent = '';
-                    reflectionLoading.classList.remove('hidden');
-
-                    try {
-                        let chatHistory = [];
-                        chatHistory.push({ role: "user", parts: [{ text: `Com base no seguinte pensamento/sentimento, forneça uma breve e gentil reflexão, sem fazer diagnósticos ou dar conselhos diretos, apenas um olhar compreensivo e encorajador. Mantenha a resposta concisa e focada em bem-estar emocional. Texto: "${prompt}"` }] });
-                        const payload = { contents: chatHistory };
-                        const apiKey = ""; 
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        const result = await response.json();
-                        
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
-                            const text = result.candidates[0].content.parts[0].text;
-                            reflectionText.textContent = text;
-                        } else {
-                            reflectionText.textContent = 'Não foi possível gerar uma reflexão no momento. Tente novamente.';
-                        }
-                    } catch (error) {
-                        console.error('Erro ao chamar a API Gemini:', error);
-                        reflectionText.textContent = 'Ocorreu um erro ao gerar a reflexão. Por favor, tente novamente mais tarde.';
-                    } finally {
-                        reflectionLoading.classList.add('hidden');
-                    }
-                });
-            }
-        });
-    </script>
+  <!-- SCRIPTS -->
+  <script>
+    AOS.init({ duration: 800, once: true });
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  </script>
 </body>
 </html>
