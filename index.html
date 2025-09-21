@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsiConecta | Psicologia Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#D4AF37',
+                        accent: '#F5DEB3',
+                        deep: '#654321',
+                        light: '#FAF3E0'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #FAF3E0 0%, #F5E6D3 100%);
+        }
+        .section-divider {
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FAF3E0' fill-opacity='1' d='M0,224L60,218.7C120,213,240,203,360,181.3C480,160,600,128,720,138.7C840,149,960,203,1080,208C1200,213,1320,171,1380,149.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .faq-question {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #8B4513;
+        }
+        .instagram-mockup {
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.5s ease;
+        }
+        .instagram-mockup:hover {
+            transform: scale(1.02);
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .btn-primary {
+            background-image: linear-gradient(to right, #8B4513, #A0522D);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-image: linear-gradient(to right, #A0522D, #D2691E);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(139, 69, 19, 0.2);
+        }
+        .btn-outline {
+            border: 2px solid #8B4513;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background-color: #8B4513;
+            color: white;
+        }
+        .floral-divider {
+            position: relative;
+            height: 30px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M1200 0L0 0 0 7.99C0 7.99 233.62 25.32 584.34 25.32 954.38 25.32 1200 7.99 1200 7.99L1200 0Z' style='fill:%23FAF3E0'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        .service-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D4AF37;
+        }
+        .service-card .w-16 {
+            background-color: #D4AF37;
+        }
+        .service-card .w-16 i {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="font-poppins text-gray-700 bg-light">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#F5E6D3] bg-opacity-90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="img/Logo-removebg-preview.png" alt="Logo" class="w-10 h-10 rounded-full">
+                <img src="img/Nome-removebg-preview.png" alt="Mente Serena" class="ml-3 h-8">
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#servicos" class="hover:text-primary transition-colors">Serviços</a>
+                <a href="#sobre" class="hover:text-primary transition-colors">Sobre</a>
+                <a href="#faq" class="hover:text-primary transition-colors">Dúvidas</a>
+                <a href="#contato" class="hover:text-primary transition-colors">Contato</a>
+            </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-deep">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#F5E6D3] py-4 shadow-lg">
+            <div class="container mx-auto px-4 flex flex-col space-y-4">
+                <a href="#servicos" class="hover:text-primary transition-colors">Serviços</a>
+                <a href="#sobre" class="hover:text-primary transition-colors">Sobre</a>
+                <a href="#faq" class="hover:text-primary transition-colors">Dúvidas</a>
+                <a href="#contato" class="hover:text-primary transition-colors">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg overflow-hidden">
+        <div class="container mx-auto px-4 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 text-center">
+                    <h1 class="font-playfair text-4xl md:text-6xl font-bold text-deep leading-tight">
+                        <span class="block">A transformação</span>
+                        <span class="block mt-2">começa com</span>
+                        <span class="block mt-2 text-primary">acolhimento</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600 max-w-lg mx-auto">
+                        Ofereço um espaço seguro para você se ouvir, se reconhecer e se reinventar. Vamos juntos trilhar o caminho do autoconhecimento e bem‑estar.
+                    </p>
+                    <div class="mt-8">
+                        <a href="#contato" class="btn-primary text-white font-medium px-8 py-3 rounded-full inline-block">
+                            Agende sua sessão
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white shadow-xl floating">                            <img src="img/Imagem do WhatsApp de 2025-09-18 à(s) 17.42.56_f5b473df.jpg" alt="Psicólogas Fundadoras" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-full shadow-lg">
+                            <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center">
+                                <i class="fas fa-heart text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- Services Intro -->
+    <section class="py-16" style="background-color: #FAF3E0;">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-deep">
+                    Como podemos ajudar você hoje?
+                </h2>
+                <div class="w-24 h-1 bg-primary mx-auto mt-4 mb-8"></div>
+                <p class="text-lg text-gray-600">
+                    A sacada da criação da nossa empresa PisConecta, foi com base nos resultados que presenciamos dentro das instituições escolares dos pós pandemia, dentre eles: diversas crises de ansiedade, ataques de pânico e alunos que tentam até mesmo o suicídio. Logo, a nossa intenção é suprir essa necessidade sem que os estudantes precisem sair de suas casas para serem atendidos, trazendo praticidade e acessibilidade a todos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-20" style="background-color: #FAF3E0;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-deep">Áreas de atuação</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">Especializada em oferecer suporte personalizado para diferentes necessidades emocionais</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card rounded-2xl p-8 shadow-md">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep mb-3">Terapia Individual</h3>
+                    <p class="text-gray-600">Atendimento personalizado para lidar com questões emocionais e desenvolver estratégias de enfrentamento.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card rounded-2xl p-8 shadow-md">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep mb-3">Autoconhecimento & Propósito</h3>
+                    <p class="text-gray-600">Exploração de valores, crenças e objetivos para alinhar escolhas de vida ao seu propósito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20" style="background-color: #FAF3E0;">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-2/5 mb-16 lg:mb-0">
+                    <div class="relative">
+                        <div class="w-96 h-96 rounded-full overflow-hidden border-8 border-white shadow-xl mx-auto">
+                            <img src="img/Captura de tela 2025-09-21 173215.png" alt="Psicóloga Mariana Faria Lima" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-3/5 lg:pl-16">
+                    <h2 class="font-playfair text-3xl md:text-4xl font-bold text-deep text-center">Sobre mim</h2>
+                    <div class="w-24 h-1 bg-primary my-6 mx-auto"></div>
+                    <p class="text-lg text-gray-600 mb-6 text-justify">
+                        Me chamo Mariana Faria Lima, tenho 23 anos e sou psicóloga com abordagem em psicanálise. Atendo adolescentes e adultos, com uma escuta voltada a todas as pessoas, especialmente às vivências de mulheres, pessoas LGBTQIA+ e pessoas negras, que muitas vezes enfrentam atravessamentos sociais profundos.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6 text-justify">
+                        Meu interesse pela psicologia começou antes mesmo da graduação, ao ler livros sobre o inconsciente e participar de palestras sobre saúde mental. Foi nesse contato inicial que descobri o desejo de ouvir o outro com sensibilidade e presença.
+                    </p>
+                    <p class="text-lg text-gray-600 text-justify">
+                        Acredito no acolhimento como instrumento de transformação e faço da escuta o centro do meu trabalho clínico.
+                    </p>
+                    <div>
+                        <img src="img/Quem_sou_eu_2_-removebg-preview.png" alt="Assinatura" class="mt-6 w-48 mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram CTA -->
+    <section class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h2 class="font-playfair text-3xl md:text-4xl font-bold text-deep mb-6 text-center">
+                        Clique abaixo e nos siga no Instagram
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Siga nosso perfil para dicas diárias, reflexões e conteúdos sobre saúde mental.
+                    </p>
+                    <a href="https://www.instagram.com/psi.mariana__?igsh=OXQ4eDV4enNybGc5" target="_blank" class="btn-outline text-deep font-medium px-8 py-3 rounded-full inline-block">
+                        <i class="fab fa-instagram mr-2"></i> @psi.mariana__
+                    </a>
+                    <a href="https://www.instagram.com/psi_conecta2025?igsh=eW5icDhjbHdmdnN2&utm_source=qr" target="_blank" class="btn-outline text-deep font-medium px-8 py-3 rounded-full inline-block">
+                        <i class="fab fa-instagram mr-2"></i> @psi_conecta2025
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="instagram-mockup overflow-hidden rounded-2xl w-full max-w-sm">
+                        <img src="img/Screenshot_2025-09-21-18-05-39-373_com.instagram.android.jpg" alt="Instagram Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20" style="background-color: #FAF3E0;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-deep">Dúvidas frequentes</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">Tire suas dúvidas sobre o processo terapêutico online</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ 1 -->
+                <div class="faq-item py-6">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-deep">Qual a duração das sessões?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        Cada sessão tem 50 minutos – tempo ideal para aprofundarmos temas sem sobrecarga.
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item py-6">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-deep">Terapia online é eficaz?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        Sim! Estudos demonstram equivalência de resultados entre atendimentos online e presenciais, desde que haja vínculo terapêutico.
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item py-6">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-deep">O que preciso para fazer terapia online?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        Um dispositivo com câmera, conexão estável e um ambiente privado onde se sinta à vontade.
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item py-6">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-deep">O sigilo é garantido?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-gray-600 hidden">
+                        Totalmente. Respeito o Código de Ética Profissional do Psicólogo, assegurando confidencialidade.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contato" class="py-24 bg-deep text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-primary opacity-50 transform translate-x-32 -translate-y-16"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-secondary opacity-50 transform -translate-x-32 translate-y-16"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-6">
+                    Prontos para iniciar sua jornada?
+                </h2>
+                <p class="text-xl mb-10 opacity-90">
+                    Entre em contato e dê o primeiro passo em direção a uma vida emocional mais equilibrada.
+                </p>
+                <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="btn-primary text-white font-medium px-8 py-4 rounded-full inline-block text-lg">
+                    <i class="fab fa-whatsapp mr-2"></i> Falar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deep text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start">
+                        <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
+                            <img src="img/Logo-removebg-preview.png" alt="Logo PsiConecta" class="w-10 h-10">
+                        </div>
+                        <img src="img/Nome-removebg-preview.png" alt="PsiConecta" class="ml-3 h-8">
+                        </div>
+                    <p class="mt-3 text-sm opacity-75">Mais do que Psicologia e Escola: um caminho para a transformação interior</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://wa.me/55XXXXXXXXXXX" class="text-white hover:text-secondary transition-colors">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/lanediaspsicologa" class="text-white hover:text-secondary transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="mailto:contato@menteserena.com" class="text-white hover:text-secondary transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm opacity-75">
+                <p>© 2025 PsiConecta | Psicologia Online. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (answer.classList.contains('hidden')) {
+                    answer.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    answer.classList.add('hidden');
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
